@@ -1,15 +1,22 @@
 import QtQuick
 import org.kde.plasma.plasmoid
+import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasma5support as Plasma5Support
 
 PlasmoidItem {
     id: root
+        Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
 
     property var games: []
     property string launchingGameTitle: ""
     property string hoveredGameTitle: ""
     property string scannerCommand: "python " + Qt.resolvedUrl("../scripts/steam_library.py").toString().substring(7)
+    property int caseWidth: 21
+    property int shelfCapacity: Math.max (1, Math.floor((width - 30) / caseWidth))
 
+    onShelfCapacityChanged: {
+        console.log("Shelf capacity:", shelfCapacity)
+    }
 
     onHoveredGameTitleChanged: {
         titleFadeAnimation.restart()
@@ -57,7 +64,7 @@ PlasmoidItem {
 
     Rectangle {
         anchors.fill: parent
-        color: "#252525"
+        color: "transparent"
 
         Rectangle {
             id: shelfBack
@@ -68,7 +75,7 @@ PlasmoidItem {
             anchors.bottom: shelf.top
 
             height: 200
-            color: "#171717"
+            color: "transparent"
 
             Repeater {
                 model: root.games
@@ -97,7 +104,7 @@ PlasmoidItem {
                         console.log("Launch requested for:", title)
                     }
 
-                    x: 30 + (index * 21)
+                    x: 30 + ((index % root.shelfCapacity) * root.caseWidth)
                     anchors.bottom: shelfBack.bottom
                 }
             }
