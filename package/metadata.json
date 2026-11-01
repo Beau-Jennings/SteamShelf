@@ -1,0 +1,16 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Redalthazar"
+            }
+        ],
+        "Category": "Utilities",
+        "Description": "A physical-style shelf for launching installed Steam games.",
+        "Icon": "applications-games",
+        "Id": "com.redalthazar.steamshelf",
+        "Name": "Steam Shelf",
+        "Version": "0.0.1"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}
