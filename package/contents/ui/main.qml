@@ -8,7 +8,7 @@ PlasmoidItem {
     property var games: []
     property string launchingGameTitle: ""
     property string hoveredGameTitle: ""
-    property string scannerCommand: "python /home/redalthazar/Projects/SteamShelf/scripts/steam_library.py"
+    property string scannerCommand: "python " + Qt.resolvedUrl("../scripts/steam_library.py").toString().substring(7)
 
 
     onHoveredGameTitleChanged: {

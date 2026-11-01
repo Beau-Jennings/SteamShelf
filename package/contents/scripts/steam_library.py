@@ -81,10 +81,4 @@ for app_id in installed_apps:
         "icon": str(icon_file) if icon_file else None
     })
 
-
-output_file = Path(__file__).parent / "games.json"
-
-with output_file.open("w", encoding="utf-8") as file:
-    json.dump(games, file, indent=2)
-
 print(json.dumps(games))
