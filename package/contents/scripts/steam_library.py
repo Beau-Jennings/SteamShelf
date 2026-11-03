@@ -62,7 +62,7 @@ for app_id in installed_apps:
 
     if app_type.lower() not in ("game", "demo"):
         print(
-            f"FILTERED: {app_id} | {app_name} | type={app_type},
+            f"FILTERED: {app_id} | {app_name} | type={app_type}",
         )
         continue
 
