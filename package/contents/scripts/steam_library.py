@@ -32,7 +32,7 @@ for library in library_data["libraryfolders"].values():
     steamapps_path = library_path / "steamapps"
 
     if not steamapps_path.is_dir():
-        print(f"SKIPPED:" {steamapps_path}", file=sys.stderr)
+        print(f"SKIPPED: {steamapps_path}", file=sys.stderr)
         continue
 
     manifest_files = list(steamapps_path.glob("appmanifest_*.acf"))
