@@ -47,13 +47,7 @@ Item {
         width: 143
         height: gameCaseRoot.height
         x: hoverHandler.hovered ? -15 : 0
-        scale: hoverHandler.hovered ? 1.05 : 1.0
-
-            Behavior on scale	{
-                NumberAnimation {
-                    duration: 200
-                }
-            }
+        y: hoverHandler.hovered ? -5 : 0
 
         // Narrow spine visible while sitting on the shelf.
         Rectangle {
@@ -208,6 +202,11 @@ Item {
 
         }
 
+        Behavior on y {
+            NumberAnimation {
+                duration: 200
+            }
+        }
         // Rotate the visual case without moving the hover target.
         transform: Rotation {
             origin.x: 0
