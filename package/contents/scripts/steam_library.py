@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+
 from pathlib import Path
 import json
 import vdf
+import sys
 
 from appinfo_parser import AppInfoParser
 
@@ -30,8 +32,16 @@ for library in library_data["libraryfolders"].values():
     steamapps_path = library_path / "steamapps"
 
     if not steamapps_path.is_dir():
+        print(f"SKIPPED:" {steamapps_path}", file=sys.stderr)
         continue
 
+    manifest_files = list(steamapps_path.glob("appmanifest_*.acf"))
+
+    print(
+        f"FOUND: {steamapps_path} -> {len(manifest_files)} manifests",
+        file=sys.stderr,
+    )
+    
     for manifest_file in steamapps_path.glob("appmanifest_*.acf"):
         app_id = manifest_file.stem.replace("appmanifest_", "")
         installed_apps[app_id] = manifest_file
