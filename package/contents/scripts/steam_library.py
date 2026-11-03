@@ -52,6 +52,7 @@ for app_id in installed_apps:
     app = appinfo_parser.get_app(int(app_id))
     
     if app is None:
+        print(f"NO APPINFO: {app_id}", file=sys.stderr)
         continue
 
     common = app.get("common", {})
